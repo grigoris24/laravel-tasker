@@ -1,0 +1,21 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.Header {
+    width: 100%;
+    background-color: lightcyan;
+    border-radius: 20px;
+    padding: 10px;  
+}
+
+#title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#tasker-title {
+    font-size: 20px;
+}
