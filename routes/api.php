@@ -11,3 +11,5 @@ Route::put('/tasks/{id}', function (Request $request, $id) {
     $task->update($request->all());
     return response()->json(['message' => 'Task updated successfully']);
 });
+
+Route::get('/tasks/{taskId}/description', [TaskController::class, 'getDescription']);
