@@ -97,4 +97,81 @@ ul {
     transform: rotate(180deg);
 }
 
+.pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
 
+#previous {
+    background-color: #f4511e;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 90px;
+    cursor: pointer;
+    padding-left: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: padding-right 0.3s ease-in-out;
+}
+
+#previous span {
+    transition: transform 0.3s ease;
+}
+
+#previous:hover span {
+    transform: translateX(-10px);
+}
+
+#previous img {
+    opacity: 0;
+    width: 15px;
+    height: 15px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#previous:hover img {
+    opacity: 1;
+    transform: rotate(90deg); 
+}
+
+#next {
+    background-color: #f4511e;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 90px;
+    cursor: pointer;
+    padding-left: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: padding-right 0.3s ease-in-out;
+}
+
+#next span {
+    transition: transform 0.3s ease;
+}
+
+#next:hover span {
+    transform: translateX(10px);
+}
+
+#next img {
+    opacity: 0;
+    width: 15px;
+    height: 15px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#next:hover img {
+    opacity: 1;
+    transform: rotate(-90deg); 
+}

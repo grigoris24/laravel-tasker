@@ -5,21 +5,28 @@ function Tasks() {
     const [tasks, setTasks] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     const [selectedTaskId, setSelectedTaskId] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [lastPage, setLastPage] = useState(1);
+    const [perPage, setPerPage] = useState(window.innerWidth <= 600 ? 5 : 10);
 
     useEffect(() => {
-        fetch('/api/tasks')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setTasks(data);
+        const handleResize = () => {
+            setPerPage(window.innerWidth <= 600 ? 5 : 10);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        fetch(`/api/tasks?page=${currentPage}&perPage=${perPage}`)
+            .then(response => response.json())
+            .then(data => {
+                setTasks(data.data);
+                setLastPage(data.last_page);
                 setIsLoaded(true);
             })
-            .catch((error) => console.error('Error fetching tasks:', error));
-    }, []);
+            .catch(error => console.error('Error fetching tasks:', error));
+    }, [currentPage, perPage]);
 
     const handleTaskClick = (taskId) => {
         setSelectedTaskId((prev) => (prev === taskId ? null : taskId));
@@ -53,6 +60,27 @@ function Tasks() {
                     </li>
                 ))}
             </ul>
+
+            {lastPage > 1 && (
+                <div className="pagination">
+                    {currentPage > 1 && (
+                        <button id="previous" onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}>
+                        <span>Previous</span>
+                        <img src="/svg/arrow.svg" alt="arrow" />
+                    </button>
+                    
+                    )}
+
+                    <span>Page {currentPage} of {lastPage}</span>
+
+                    {currentPage < lastPage && (
+                        <button id="next" onClick={() => setCurrentPage(prev => Math.min(prev + 1, lastPage))}>
+                            <img src="/svg/arrow.svg" alt="arrow" />
+                            <span>Next</span>
+                        </button>
+                    )}
+                </div>
+            )}
         </div>
     );
 }

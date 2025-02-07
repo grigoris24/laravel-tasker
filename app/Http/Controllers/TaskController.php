@@ -7,9 +7,11 @@ use App\Models\Task;
 class TaskController extends Controller
 {
     public function index()
-    {
-        return response()->json(Task::select('id', 'name', 'description')->get());
-    }
+{
+    $perPage = request()->query('perPage', 10);
+    return response()->json(Task::select('id', 'name', 'description')->paginate($perPage));
+}
+
 
     public function getDescription($taskId)
     {

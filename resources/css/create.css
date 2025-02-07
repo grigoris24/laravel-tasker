@@ -1,0 +1,17 @@
+* {
+    position: relative;
+    box-sizing: border-box;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 60vw;
+}
+
+#task-create h3 {
+    display: flex;
+    justify-content: center;
+}
