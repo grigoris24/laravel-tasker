@@ -13,3 +13,5 @@ Route::put('/tasks/{id}', function (Request $request, $id) {
 });
 
 Route::get('/tasks/{taskId}/description', [TaskController::class, 'getDescription']);
+
+Route::post('/tasks', [TaskController::class, 'store']);

@@ -90,7 +90,7 @@ ul {
 }
 
 #task-list .arrow {
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 
 #task-list .arrow.rotate {
@@ -174,4 +174,12 @@ ul {
 #next:hover img {
     opacity: 1;
     transform: rotate(-90deg); 
+}
+
+#previous img {
+    filter: invert(100%);
+}
+
+#next img {
+    filter: invert(100%);
 }

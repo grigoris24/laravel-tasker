@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -21,6 +22,20 @@ class TaskController extends Controller
         }
         return response()->json(['error' => 'Task not found'], 404);
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $task = Task::create($validatedData);
+
+        return response()->json(['message' => 'Task created successfully!', 'task' => $task], 201);
+    }
+
+    
 }
 
 

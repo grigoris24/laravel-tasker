@@ -9,9 +9,70 @@
     justify-content: center;
     margin: auto;
     width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 #task-create h3 {
     display: flex;
     justify-content: center;
+}
+
+#submit {
+    margin-top: 20px;
+    width: 100px;
+}
+
+form input, 
+form textarea {
+    width: 300px;
+}
+
+#submit {
+    background-color: #f4511e;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 90px;
+    cursor: pointer;
+    padding-left: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: padding-right 0.3s ease-in-out;
+}
+
+#submit span {
+    transition: transform 0.3s ease;
+}
+
+#submit:hover span {
+    transform: translateX(-10px);
+}
+
+#submit img {
+    opacity: 0;
+    width: 15px;
+    height: 15px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#submit:hover img {
+    opacity: 1;
+    transform: rotate(90deg); 
+}
+
+#submit img {
+    filter: invert(100%);
+}
+
+@media(min-width: 601px) {
+    form input,
+    form textarea {
+        width: 80vw;
+    }
 }

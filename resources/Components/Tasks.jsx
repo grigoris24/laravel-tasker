@@ -7,7 +7,8 @@ function Tasks() {
     const [selectedTaskId, setSelectedTaskId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
-    const [perPage, setPerPage] = useState(window.innerWidth <= 600 ? 5 : 10);
+    const [perPage, setPerPage] = useState(window.innerWidth <= 600 ? 5 : 10
+    );
 
     useEffect(() => {
         const handleResize = () => {
@@ -65,9 +66,9 @@ function Tasks() {
                 <div className="pagination">
                     {currentPage > 1 && (
                         <button id="previous" onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}>
-                        <span>Previous</span>
-                        <img src="/svg/arrow.svg" alt="arrow" />
-                    </button>
+                            <span>Previous</span>
+                            <img src="/svg/arrow.svg" alt="arrow" />
+                        </button>
                     
                     )}
 
