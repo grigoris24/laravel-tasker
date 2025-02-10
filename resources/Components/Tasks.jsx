@@ -7,8 +7,7 @@ function Tasks() {
     const [selectedTaskId, setSelectedTaskId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
-    const [perPage, setPerPage] = useState(window.innerWidth <= 600 ? 5 : 10
-    );
+    const [perPage, setPerPage] = useState(window.innerWidth <= 600 ? 5 : 10);
 
     useEffect(() => {
         const handleResize = () => {
@@ -40,7 +39,11 @@ function Tasks() {
                     <li
                         key={task.id}
                         className={`task item ${isLoaded ? 'move-up' : ''} ${selectedTaskId === task.id ? 'expanded' : ''}`}
-                        style={{ animationDelay: `${index * 0.1}s` }}
+                        style={{
+                            animationDelay: `${index * 0.1}s`,
+                            backgroundColor: task.color || '',  
+                            color: task.text_color || 'black',
+                        }}
                         onClick={() => handleTaskClick(task.id)}
                     >
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between", alignItems: "center" }}>
@@ -55,7 +58,7 @@ function Tasks() {
 
                         {selectedTaskId === task.id && (
                             <div className="task-description">
-                                <p>{task.description}</p>
+                                <p style={{color: task.text_color || 'black'}}>{task.description}</p>
                             </div>
                         )}
                     </li>
@@ -69,7 +72,6 @@ function Tasks() {
                             <span>Previous</span>
                             <img src="/svg/arrow.svg" alt="arrow" />
                         </button>
-                    
                     )}
 
                     <span>Page {currentPage} of {lastPage}</span>

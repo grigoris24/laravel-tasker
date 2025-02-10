@@ -8,11 +8,14 @@
     flex-direction: column;
     justify-content: center;
     margin: auto;
-    width: 60vw;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    background-color: beige;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #task-create h3 {
@@ -26,8 +29,9 @@
 }
 
 form input, 
-form textarea {
-    width: 300px;
+#textarea {
+    width: 70vw;
+    border-radius: 10px;
 }
 
 #submit {
@@ -70,9 +74,48 @@ form textarea {
     filter: invert(100%);
 }
 
+#task-create-body {
+    width: 100vw;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+#task-create {
+    width: 100%;
+}
+
+
+
+#textarea {
+    height: 50px; 
+    line-height: 1;
+    padding-bottom: 50px;
+    resize: none; 
+    overflow-y: auto;
+    word-wrap: break-word; 
+    white-space: pre-wrap; 
+}
+
+#color,
+#text_color {
+    width: 50px;
+}
+
 @media(min-width: 601px) {
     form input,
-    form textarea {
-        width: 80vw;
+    #textarea {
+        width: 50vw;
     }
+
+    #task-create-body {
+        width: 60vw;
+    }
+
+    #textarea {
+        height: 100px;
+    }
+
+   
 }

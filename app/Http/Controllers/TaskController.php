@@ -8,11 +8,10 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public function index()
-{
-    $perPage = request()->query('perPage', 10);
-    return response()->json(Task::select('id', 'name', 'description')->paginate($perPage));
-}
-
+    {
+        $perPage = request()->query('perPage', 10);
+        return response()->json(Task::select('id', 'name', 'description', 'color', 'text_color')->paginate($perPage));
+    }
 
     public function getDescription($taskId)
     {
@@ -28,14 +27,17 @@ class TaskController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'color' => 'required|string|max:7',  
+            'text_color' => 'required|string|max:7',
         ]);
 
-        $task = Task::create($validatedData);
+        $task = Task::create([
+            'name' => $validatedData['name'],
+            'description' => $validatedData['description'],
+            'color' => $validatedData['color'],
+            'text_color' => $validatedData['text_color'],
+        ]);
 
         return response()->json(['message' => 'Task created successfully!', 'task' => $task], 201);
     }
-
-    
 }
-
-
