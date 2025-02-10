@@ -25,10 +25,27 @@
                 <div id="title">
                     <div id="tasker-title">Tasker by Grigoris Papadopoulos</div>
 
-                    <div id="desktop"  style={{ gap: '5px' }}>
-                        <button className="buttons" onClick={home} id="create_task">Home</button>
-                        <button className="buttons" onClick={handleNewTask} id="create_task">Create Task</button>
+                    <div id="desktop" style={{ gap: '5px' }}>
+                        <a
+                            className="buttons"
+                            onClick={home}
+                            id="home_link"
+                            href="#"
+                            style={{ textDecoration: 'none', cursor: 'pointer' }}
+                        >
+                            Home
+                        </a>
+                        <a
+                            className="buttons"
+                            onClick={handleNewTask}
+                            id="create_task_link"
+                            href="#"
+                            style={{ textDecoration: 'none', cursor: 'pointer' }}
+                        >
+                            Create Task
+                        </a>
                     </div>
+
 
                     <div className={`hamburger ${menuOpen ? "active" : ""}`} onClick={toggleMenu}>
                         <span></span>

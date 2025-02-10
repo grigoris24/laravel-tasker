@@ -5,7 +5,7 @@
 
 .Header {
     width: 100%;
-    background-color: lightcyan;
+    background-color: #515151;
     border-radius: 20px;
     padding: 10px;  
 }
@@ -19,6 +19,7 @@
 
 #tasker-title {
     font-size: 20px;
+    color: white;
 }
 
 @media (max-width: 600px) {
@@ -125,4 +126,9 @@
 
 .buttons {
     padding: 10px;
+    color: white;
+}
+
+.buttons:hover {
+    color: black;
 }
