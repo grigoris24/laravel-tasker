@@ -8,6 +8,8 @@ function Tasks() {
     const [currentPage, setCurrentPage] = useState(1);
     const [lastPage, setLastPage] = useState(1);
     const [perPage, setPerPage] = useState(window.innerWidth <= 600 ? 5 : 10);
+    const [hovering, setHovering] = useState(false);
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -61,6 +63,48 @@ function Tasks() {
                                 <p style={{color: task.text_color || 'black'}}>{task.description}</p>
                             </div>
                         )}
+
+                        <div className="extra_buttons">
+                        <div id="outside" title="Edit Task" onMouseEnter={() => setHovering(true)}
+                            onMouseLeave={() => setHovering(false)}>
+                            <div
+                            id="edit" >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <div id="pencil">
+                                <div id="eraser"></div>
+                                <div id="metal-band"></div>
+                                <div id="body"></div>
+                                <div id="tip"></div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div 
+                            id="mark_completed"
+                            title="Mark As Completed" 
+                            onMouseEnter={() => setHovering(true)}
+                            onMouseLeave={() => setHovering(false)}
+                            className={hovering ? 'draw' : ''}
+                        >
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div 
+                            id="delete"
+                            title="Delete task" 
+                            onMouseEnter={() => setHovering(true)}
+                            onMouseLeave={() => setHovering(false)}
+                            className={hovering ? 'Xanimation' : ''}
+                        >
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        </div>
+
                     </li>
                 ))}
             </ul>
